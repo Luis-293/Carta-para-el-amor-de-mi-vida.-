@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti el amor de mi vida</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #08080d;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* =========================
+   FONDO
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 80, 130, .12), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(130, 70, 255, .12), transparent 30%),
+        #08080d;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: .5;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%,100% { opacity: .15; transform: scale(.8); }
+    50% { opacity: 1; transform: scale(1.4); }
+}
+
+/* =========================
+   SOBRE INICIAL
+========================= */
+
+.intro {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #08080d;
+    z-index: 100;
+    transition: 1s ease;
+}
+
+.intro.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.intro small {
+    color: #aaa;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.envelope {
+    width: 280px;
+    height: 180px;
+    background: linear-gradient(145deg, #e9a0b8, #c96b8d);
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 25px 70px rgba(255, 70, 130, .25);
+    transition: .4s;
+}
+
+.envelope:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #d9829e;
+    clip-path: polygon(0 0, 50% 55%, 100% 0);
+    transform-origin: top;
+    transition: 1s;
+    z-index: 2;
+}
+
+.envelope.open::before {
+    transform: rotateX(180deg);
+}
+
+.envelope::after {
+    content: "❤️";
+    position: absolute;
+    font-size: 42px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.intro-text {
+    margin-top: 35px;
+    text-align: center;
+    color: #ddd;
+}
+
+.intro-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.intro-text p {
+    font-size: 13px;
+    color: #888;
+}
+
+/* =========================
+   CONTENIDO
+========================= */
+
+main {
+    max-width: 850px;
+    margin: auto;
+    padding: 90px 22px;
+}
+
+.hero {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.hero .small {
+    color: #d88ba4;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(55px, 11vw, 105px);
+    font-weight: 500;
+    line-height: .9;
+}
+
+.hero h1 span {
+    color: #e68ba9;
+}
+
+.hero p {
+    max-width: 550px;
+    color: #aaa;
+    margin-top: 30px;
+    line-height: 1.8;
+}
+
+.scroll {
+    margin-top: 80px;
+    color: #666;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* =========================
+   CARTA
+========================= */
+
+.letter {
+    margin-top: 100px;
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 18px;
+    padding: clamp(30px, 7vw, 70px);
+    box-shadow: 0 30px 100px rgba(0,0,0,.3);
+}
+
+.letter-label {
+    color: #df89a5;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    margin-bottom: 35px;
+}
+
+.letter h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    margin-bottom: 35px;
+    font-weight: 500;
+}
+
+.letter p {
+    color: #ccc;
+    line-height: 2;
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+.highlight {
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    line-height: 1.5;
+    border-left: 2px solid #dc83a1;
+    padding-left: 25px;
+    margin: 45px 0;
+}
+
+/* =========================
+   FOTO
+========================= */
+
+.photo {
+    margin: 70px 0;
+    width: 100%;
+    height: 430px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    background: #15151c;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 1s;
+}
+
+.photo:hover img {
+    transform: scale(1.04);
+}
+
+.photo span {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: rgba(0,0,0,.55);
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 12px;
+    backdrop-filter: blur(10px);
+}
+
+/* =========================
+   AUDIO
+========================= */
+
+.audio-box {
+    margin: 70px 0;
+    text-align: center;
+    padding: 45px 20px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 15px;
+}
+
+.audio-box .icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.audio-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.audio-box p {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+audio {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* =========================
+   COSAS FUTURAS
+========================= */
+
+.future {
+    margin-top: 100px;
+}
+
+.future-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.future-title span {
+    color: #df89a5;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.future-title h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.future-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.future-card {
+    padding: 30px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.07);
+    transition: .3s;
+}
+
+.future-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(223,137,165,.4);
+}
+
+.future-card .emoji {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.future-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.future-card p {
+    color: #888;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* =========================
+   COLOMBIA PERÚ
+========================= */
+
+.distance {
+    text-align: center;
+    margin: 120px 0;
+}
+
+.countries {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.distance h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 45px;
+    font-weight: 500;
+}
+
+.distance p {
+    color: #999;
+    max-width: 500px;
+    margin: 20px auto;
+    line-height: 1.8;
+}
+
+/* =========================
+   SOBRE FINAL
+========================= */
+
+.final {
+    text-align: center;
+    margin: 130px 0 80px;
+}
+
+.final h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.final p {
+    color: #999;
+    margin: 20px auto 35px;
+    max-width: 500px;
+    line-height: 1.8;
+}
+
+.secret-envelope {
+    width: 250px;
+    height: 160px;
+    margin: 40px auto;
+    background: linear-gradient(145deg, #d87e9b, #a95072);
+    border-radius: 7px;
+    cursor: pointer;
+    position: relative;
+    transition: .4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    box-shadow: 0 20px 60px rgba(220,100,140,.2);
+}
+
+.secret-envelope:hover {
+    transform: translateY(-8px);
+}
+
+.secret-message {
+    display: none;
+    animation: appear 1s ease;
+}
+
+.secret-message.show {
+    display: block;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.secret-message h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.secret-message p {
+    color: #ddd;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    color: #555;
+    font-size: 11px;
+    padding: 40px 20px 70px;
+}
+
+footer span {
+    color: #d87e9b;
+}
+
+/* =========================
+   CORAZONES
+========================= */
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 15px;
+    pointer-events: none;
+    animation: floatHeart 6s linear forwards;
+    opacity: .7;
+}
+
+@keyframes floatHeart {
+    to {
+        transform: translateY(-110vh) rotate(30deg);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 600px) {
+
+    main {
+        padding: 50px 17px;
+    }
+
+    .hero {
+        min-height: 80vh;
+    }
+
+    .letter {
+        padding: 28px 22px;
+    }
+
+    .letter h2 {
+        font-size: 35px;
+    }
+
+    .photo {
+        height: 320px;
+    }
+
+    .future-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .distance h2,
+    .final h2 {
+        font-size: 40px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+<div class="stars" id="stars"></div>
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section class="intro" id="intro">
+
+    <small>Hay algo para ti...</small>
+
+    <div class="envelope" id="envelope"></div>
+
+    <div class="intro-text">
+        <h2>Una carta que hice para ti</h2>
+        <p>Toca el sobre ❤️</p>
+    </div>
+
+</section>
+
+
+<main>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="small">Para el amor de mi vida</div>
+
+    <h1>
+        Para ti,<br>
+        <span>mi amor.</span>
+    </h1>
+
+    <p>
+        Puede que estemos separados por kilómetros,
+        pero hay personas que consiguen sentirse cerca
+        incluso estando lejos.
+    </p>
+
+    <div class="scroll">
+        ↓ Baja lentamente
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CARTA
+========================= -->
+
+<section class="letter">
+
+    <div class="letter-label">
+        Una carta para ti
+    </div>
+
+    <h2>Mi Linlin...</h2>
+
+    <p>
+        No sabía exactamente cómo hacerte este detalle.
+        Después de todas las cosas que ya te he hecho,
+        sentía que tenía que encontrar una forma diferente
+        de decirte algo que probablemente ya sabes.
+    </p>
+
+    <p>
+        Te amo muchísimo.
+    </p>
+
+    <p>
+        Y aunque pueda parecer una frase sencilla,
+        detrás de esas palabras hay muchísimas cosas:
+        recuerdos, conversaciones, risas, momentos,
+        noches hablando contigo y también esos momentos
+        en los que simplemente deseo poder tenerte aquí conmigo.
+    </p>
+
+    <div class="highlight">
+        "Qué extraño es amar tanto a alguien que está
+        tan lejos y, al mismo tiempo, sentir que forma
+        parte de todos mis días."
+    </div>
+
+    <p>
+        A veces pienso en la distancia que hay entre
+        Colombia y Perú y me parece increíble que,
+        entre tantos millones de personas y tantos lugares,
+        nosotros hayamos terminado encontrándonos.
+    </p>
+
+    <p>
+        Y honestamente, no cambiaría eso por nada.
+    </p>
+
+    <p>
+        Porque si volver a conocerte significara volver
+        a recorrer todo ese tiempo, lo haría.
+        Si tuviera que volver a esperar para conocerte,
+        esperaría.
+        Y si tuviera que elegirte otra vez...
+        te elegiría otra vez.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     FOTO
+========================= -->
+
+<section class="photo">
+
+    <!-- CAMBIA "foto1.jpg" POR TU FOTO -->
+
+    <img src="foto1.jpg" alt="Nuestro recuerdo">
+
+    <span>
+        Uno de tantos recuerdos que guardo con muchísimo cariño.
+    </span>
+
+</section>
+
+
+<!-- =========================
+     SEGUNDA PARTE
+========================= -->
+
+<section class="letter">
+
+    <div class="letter-label">
+        Lo que quizás no digo suficiente
+    </div>
+
+    <h2>Gracias por existir.</h2>
+
+    <p>
+        Gracias por cada conversación, por cada risa,
+        por cada momento en el que has conseguido hacer
+        que mis dias sean mejores.
+    </p>
+
+    <p>
+        Gracias por ser tú.
+    </p>
+
+    <p>
+        Hay cosas de ti que probablemente nunca voy
+        a saber explicar completamente.
+        Tu forma de hablar, tus ocurrencias,
+        la manera en que me haces sentir...
+    </p>
+
+    <p>
+        Y quizás nunca encuentre las palabras perfectas
+        para describir todo lo que significas para mí.
+    </p>
+
+    <div class="highlight">
+        Pero espero que nunca tengas que dudar
+        de lo importante que eres para mí.
+    </div>
+
+    <p>
+        Porque aunque no pueda estar físicamente a tu lado
+        cada vez que quisiera, quiero que sepas que hay
+        alguien al otro lado de la pantalla que piensa
+        en ti, que te extraña y que espera con ilusión
+        un mensaje y un momento que podamos compartir.
+    </p>
+
+</section>
+
+
+
+
+
+<!-- =========================
+     DISTANCIA
+========================= -->
+
+<section class="distance">
+
+    <div class="countries">
+        🇨🇴 &nbsp; ❤️ &nbsp; 🇵🇪
+    </div>
+
+    <h2>Dos países.<br>Una historia.</h2>
+
+    <p>
+        Colombia y Perú pueden estar separados por
+        kilómetros, pero ninguno de esos kilómetros
+        cambia lo que siento por ti.
+    </p>
+
+    <p>
+        Y algún día quiero que podamos mirar atrás
+        y decir: "¿Te acuerdas cuando todo comenzó
+        a distancia?"
+    </p>
+
+</section>
+
+
+<!-- =========================
+     FUTURO
+========================= -->
+
+<section class="future">
+
+    <div class="future-title">
+
+        <span>LO QUE TODAVÍA NOS FALTA</span>
+
+        <h2>Quiero vivir esto contigo.</h2>
+
+    </div>
+
+
+    <div class="future-grid">
+
+        <div class="future-card">
+            <div class="emoji">✈️</div>
+            <h3>Conocerte en persona</h3>
+            <p>
+                El día en que por fin pueda verte frente a mí
+                y no detrás de una pantalla.
+            </p>
+        </div>
+
+        <div class="future-card">
+            <div class="emoji">🤗</div>
+            <h3>El primer abrazo</h3>
+            <p>
+                Ese abrazo que probablemente dure mucho más
+                de lo normal porque tendremos demasiado tiempo
+                que recuperar.
+            </p>
+        </div>
+
+        <div class="future-card">
+            <div class="emoji">📸</div>
+            <h3>Nuestra primera foto juntos</h3>
+            <p>
+                Una foto que no sea una captura de pantalla,
+                sino nosotros dos estando finalmente juntos.
+            </p>
+        </div>
+
+        <div class="future-card">
+            <div class="emoji">🍿</div>
+            <h3>Una cita normal</h3>
+            <p>
+                Comer juntos, caminar, hablar de cualquier cosa
+                y simplemente disfrutar de tenernos cerca.
+            </p>
+        </div>
+
+        <div class="future-card">
+            <div class="emoji">🌙</div>
+            <h3>Una noche juntos</h3>
+            <p>
+                Sin despedirnos por llamada.
+                Sin decir "ya me tengo que ir".
+            </p>
+        </div>
+
+        <div class="future-card">
+            <div class="emoji">❤️</div>
+            <h3>Muchísimas historias más</h3>
+            <p>
+                Porque esta carta no es el final.
+                Apenas estamos escribiendo nuestra historia.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ÚLTIMA PARTE
+========================= -->
+
+<section class="letter">
+
+    <div class="letter-label">
+        Y antes de terminar...
+    </div>
+
+    <h2>Quiero prometerte algo.</h2>
+
+    <p>
+        No puedo prometerte que todo siempre será perfecto.
+        No puedo prometerte que nunca tendremos días malos
+        o momentos difíciles.
+    </p>
+
+    <p>
+        Pero sí puedo prometerte que mientras esté contigo,
+        voy a valorar lo que tenemos.
+    </p>
+
+    <p>
+        Voy a intentar hacerte sonreír.
+        Voy a escucharte.
+        Voy a celebrar tus logros.
+        Voy a estar cuando tengas días buenos
+        y también cuando tengas días malos.
+    </p>
+
+    <div class="highlight">
+        Y sobre todo, quiero seguir construyendo
+        esto contigo.
+    </div>
+
+    <p>
+        Porque no quiero que nuestra historia se quede
+        solamente en mensajes, llamadas y videollamadas.
+    </p>
+
+    <p>
+        Quiero que algún día podamos recordar todo esto
+        mientras estamos sentados uno al lado del otro.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     SOBRE FINAL
+========================= -->
+
+<section class="final">
+
+    <h2>Una última cosa...</h2>
+
+    <p>
+        Hay un último mensaje que preparé para ti.
+        Y este sí quiero que lo abras tú.
+    </p>
+
+    <div class="secret-envelope" id="secretEnvelope">
+        💌
+    </div>
+
+    <div class="secret-message" id="secretMessage">
+
+        <h3>Te amo. ❤️</h3>
+
+        <p>
+            Gracias por compartir un pedacito de tu vida conmigo, por todos esos momentos llenos de emociones, risas y cariño
+            cada dia que pasa me enamoro mas de ti, de tu forma de ser, de tu belleza, de tu mirada y sobre todo de esa forma
+            tan hermosa que tienes de amar y de hacerse sentir especial, gracias por ser mi compañera de vida, gracias por
+            ser todo para mi. Te amo con todo mi corazón Linlin, Feliz mes mi amor, gracias por elegirme a mi y por dejarme amarte.
+        </p>
+
+        <p>
+            Si algún día vuelves a esta carta,
+            quiero que recuerdes una cosa:
+        </p>
+
+        <div class="highlight">
+            Te elegiría a ti otra vez.
+            En cualquier distancia.
+            En cualquier lugar.
+            En cualquier momento.
+        </div>
+
+        <p>
+            Gracias por ser parte de mi vida.
+        </p>
+
+    </div>
+
+</section>
+
+
+<footer>
+    Hecho con todo mi amor para <span> Mi Linlin</span> ❤️
+    <br><br>
+    Colombia 🇨🇴 → Perú 🇵🇪
+</footer>
+
+</main>
+
+
+<script>
+
+/* =========================
+   ABRIR SOBRE
+========================= */
+
+const envelope = document.getElementById("envelope");
+const intro = document.getElementById("intro");
+
+envelope.addEventListener("click", () => {
+
+    envelope.classList.add("open");
+
+    setTimeout(() => {
+        intro.classList.add("hidden");
+    }, 900);
+
+});
+
+
+/* =========================
+   SOBRE FINAL
+========================= */
+
+const secretEnvelope =
+    document.getElementById("secretEnvelope");
+
+const secretMessage =
+    document.getElementById("secretMessage");
+
+secretEnvelope.addEventListener("click", () => {
+
+    secretEnvelope.style.display = "none";
+
+    secretMessage.classList.add("show");
+
+    createHearts(25);
+
+});
+
+
+/* =========================
+   ESTRELLAS
+========================= */
+
+const stars = document.getElementById("stars");
+
+for(let i = 0; i < 100; i++){
+
+    const star = document.createElement("div");
+
+    star.classList.add("star");
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    stars.appendChild(star);
+}
+
+
+/* =========================
+   CORAZONES
+========================= */
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.classList.add("heart");
+
+    heart.innerHTML =
+        Math.random() > .5 ? "❤️" : "♡";
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (10 + Math.random() * 18) + "px";
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 9000);
+}
+
+
+function createHearts(number){
+
+    for(let i = 0; i < number; i++){
+
+        setTimeout(() => {
+            createHeart();
+        }, i * 100);
+
+    }
+
+}
+
+
+/* Corazones ocasionales */
+
+setInterval(() => {
+
+    if(Math.random() > .6){
+        createHeart();
+    }
+
+}, 2500);
+
+</script>
+
+</body>
+</html>
